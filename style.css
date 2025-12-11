@@ -268,6 +268,20 @@ h2::after {
     color: #ffffff;
 }
 
+/* Fix for charity: water project card width */
+#projects > .project-card {
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+/* Adjust project content wrapper for better layout */
+.project-content-wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 0; /* Remove padding since project-card already has padding */
+}
+
 /* Bio Section */
 .bio {
     background: #f6f8fa;
