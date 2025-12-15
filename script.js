@@ -22,8 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         backSpeed: 30,
         backDelay: 2000,
         loop: true,
-        showCursor: true,
-        cursorChar: '|'
+        showCursor: false
     });
 });
 
