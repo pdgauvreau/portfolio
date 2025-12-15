@@ -39,10 +39,10 @@ function updateScrollProgress() {
         // Check if mobile (width-based)
         if (window.innerWidth <= 768) {
             scrollProgress.style.width = progress + '%';
-            scrollProgress.style.height = '4px';
+            scrollProgress.style.height = '2px';
         } else {
             scrollProgress.style.height = progress + '%';
-            scrollProgress.style.width = '4px';
+            scrollProgress.style.width = '2px';
         }
     }
 }
