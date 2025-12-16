@@ -11,7 +11,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    padding-left: 200px;
+    padding-left: 240px;
 }
 
 body.menu-open {
@@ -49,7 +49,7 @@ body.menu-open::before {
 .scroll-progress {
     position: fixed;
     top: 0;
-    left: 200px;
+    left: 240px;
     width: 3px;
     background: linear-gradient(180deg, #6366f1, #8b5cf6, #ec4899, #f59e0b);
     height: 0%;
@@ -71,14 +71,18 @@ body.menu-open::before {
 /* Navigation - Vertical Sidebar - Minimalistic */
 nav {
     position: fixed;
-    left: 0;
-    top: 0;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
     width: 200px;
-    height: 100vh;
+    height: calc(100vh - 3rem);
+    max-height: 800px;
     background: #ffffff;
     z-index: 1000;
     padding: 2rem 0;
-    border-right: 1px solid #e9ecef;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -1139,9 +1143,16 @@ footer p {
 
     nav {
         left: -100%;
+        top: 0;
+        transform: none;
         width: 200px;
-        transition: left 0.3s ease;
+        height: 100vh;
+        max-height: none;
+        border-radius: 0;
         border-right: 1px solid #e9ecef;
+        border-left: none;
+        box-shadow: none;
+        transition: left 0.3s ease;
     }
 
     nav.active {
