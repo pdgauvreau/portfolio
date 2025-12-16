@@ -4,14 +4,59 @@
     box-sizing: border-box;
 }
 
+html {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Inter', 'Arial', sans-serif;
-    background: #fafbfc;
+    background: transparent;
     color: #333333;
     line-height: 1.6;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    padding-left: 240px;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Ensure all content is properly layered above background */
+section, footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Global background particles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
 }
 
 body.menu-open {
@@ -49,13 +94,14 @@ body.menu-open::before {
 .scroll-progress {
     position: fixed;
     top: 0;
-    left: 240px;
+    left: 1.5rem;
     width: 3px;
-    background: linear-gradient(180deg, #6366f1, #8b5cf6, #ec4899, #f59e0b);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.8));
     height: 0%;
     z-index: 9999;
     transition: height 0.1s ease;
-    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
 }
 
 @media (max-width: 768px) {
@@ -77,12 +123,13 @@ nav {
     width: 200px;
     height: calc(100vh - 3rem);
     max-height: 800px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 2rem 0;
-    border: 1px solid #e9ecef;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -233,14 +280,11 @@ nav a.external:hover::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background: transparent;
     position: relative;
     overflow: hidden;
     padding: 2rem;
-    border-radius: 32px;
-    margin: 1.5rem;
+    z-index: 1;
 }
 
 @keyframes gradientShift {
@@ -250,23 +294,25 @@ nav a.external:hover::after {
 }
 
 .hero-background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 1;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .particle {
-    position: absolute;
+    position: fixed;
     width: 4px;
     height: 4px;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
     pointer-events: none;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    z-index: 1;
 }
 
 .particle:nth-child(1) {
@@ -312,21 +358,6 @@ nav a.external:hover::after {
     height: 6px;
     background: rgba(59, 130, 246, 0.7);
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.9);
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-    animation: float 20s ease-in-out infinite;
-    z-index: 1;
 }
 
 @keyframes float {
@@ -470,6 +501,7 @@ section {
     min-height: 50vh;
     display: block;
     position: relative;
+    z-index: 1;
 }
 
 h2 {
@@ -479,10 +511,9 @@ h2 {
     text-align: center;
     letter-spacing: 2px;
     position: relative;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 h2::after {
@@ -506,14 +537,15 @@ h2::after {
 }
 
 .project-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 15px;
     padding: 1.5rem;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .project-card::before {
@@ -662,12 +694,13 @@ h2::after {
 
 /* Bio Section */
 .bio {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 3rem;
     margin: 3rem 0;
-    border: 2px solid rgba(99, 102, 241, 0.2);
-    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .bio-content {
@@ -695,7 +728,7 @@ h2::after {
 }
 
 .bio-text {
-    color: #555;
+    color: #333;
     font-size: 1.1rem;
     line-height: 1.8;
 }
@@ -731,13 +764,14 @@ h2::after {
 }
 
 .song-item {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
-    border: 2px solid rgba(99, 102, 241, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 15px;
     padding: 1.2rem;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .song-item:hover {
@@ -773,13 +807,14 @@ h2::after {
 
 /* Podcast Section */
 .podcast-item {
-    background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(245, 158, 11, 0.05));
-    border: 2px solid rgba(236, 72, 153, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 15px;
     padding: 1.5rem;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(236, 72, 153, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .podcast-item:hover {
@@ -816,12 +851,13 @@ h2::after {
 
 /* Book Section */
 .book-item {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(99, 102, 241, 0.05));
-    border: 2px solid rgba(59, 130, 246, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 15px;
     padding: 1.5rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .book-item:hover {
@@ -884,13 +920,14 @@ h2::after {
 
 /* Contact Section */
 .contact-content {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 3rem;
     margin: 3rem 0;
-    border: 2px solid rgba(139, 92, 246, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     text-align: center;
-    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .contact-content p {
@@ -908,7 +945,7 @@ h2::after {
 
 .contact-links li {
     font-size: 1.1rem;
-    color: #555;
+    color: #333;
     margin-bottom: 1rem;
     text-align: left;
 }
@@ -968,16 +1005,17 @@ h2::after {
 
 /* About Me Section */
 .about-content {
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(236, 72, 153, 0.05));
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 3rem;
     margin-bottom: 3rem;
-    border: 2px solid rgba(245, 158, 11, 0.2);
-    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .about-text {
-    color: #555;
+    color: #333;
     font-size: 1.1rem;
     line-height: 1.8;
 }
@@ -1019,14 +1057,14 @@ h2::after {
 }
 
 .skill-item {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(250, 251, 252, 0.95));
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border: 2px solid transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 20px;
     padding: 2.5rem 2rem;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -1103,10 +1141,13 @@ h2::after {
 
 /* Footer */
 footer {
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     padding: 3rem 2rem;
     text-align: center;
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
 }
 
 .social-links {
@@ -1135,6 +1176,10 @@ footer p {
 @media (max-width: 768px) {
     body {
         padding-left: 0;
+    }
+    
+    .scroll-progress {
+        left: 0;
     }
 
     .hamburger {
@@ -1179,8 +1224,7 @@ footer p {
     }
 
     .hero {
-        border-radius: 24px;
-        margin: 1rem;
+        padding: 1rem;
     }
 
     .hero-title {
