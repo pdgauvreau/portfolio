@@ -5,7 +5,7 @@
 }
 
 html {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    background: linear-gradient(135deg, #2d3a6b 0%, #1a1a2e 15%, #3d2a5a 30%, #2a1a3d 45%, #1e3a5f 60%, #16213e 75%, #0f3460 90%, #1a1a2e 100%);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
     position: relative;
@@ -121,8 +121,8 @@ nav {
     top: 50%;
     transform: translateY(-50%);
     width: 200px;
-    height: calc(100vh - 3rem);
-    max-height: 800px;
+    height: auto;
+    max-height: 90vh;
     background: transparent;
     backdrop-filter: blur(10px);
     z-index: 1000;
