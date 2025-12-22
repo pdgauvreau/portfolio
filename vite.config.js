@@ -9,5 +9,5 @@ export default defineConfig({
     sourcemap: false
   },
   publicDir: 'public',
-  base: './'
+  base: '/portfolio/'
 })
