@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import Navigation from './components/Navigation'
 import ScrollProgress from './components/ScrollProgress'
 import HeroBackground from './components/HeroBackground'
-import VisitorCount from './components/VisitorCount'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
 import Bio from './components/Bio'
@@ -115,7 +114,6 @@ function App() {
     <>
       <ScrollProgress />
       <HeroBackground />
-      <VisitorCount />
       <Navigation />
       <Hero />
       <Projects />

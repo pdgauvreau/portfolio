@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import VisitorCount from './VisitorCount'
 
 const Hero = () => {
   const typedTextRef = useRef(null)
@@ -40,6 +41,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="hero">
+      <VisitorCount />
       <div className="hero-content" data-aos="fade-up" data-aos-duration="1000">
         <h1 className="hero-title">
           <span className="name-highlight">P. David Gauvreau</span>

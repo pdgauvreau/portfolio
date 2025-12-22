@@ -72,7 +72,7 @@ const VisitorCount = () => {
   return (
     <div className="visitor-count">
       <span className="visitor-text">
-        Visitor Count: {count !== null ? count.toLocaleString() : '—'}
+        visitor number #{count !== null ? count.toLocaleString() : '—'}
       </span>
     </div>
   )
