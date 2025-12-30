@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import LinkPreview from './LinkPreview'
 
+const BASE_URL = import.meta.env.BASE_URL
+
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoRotating, setIsAutoRotating] = useState(true)
@@ -76,7 +78,7 @@ const Projects = () => {
         demo: 'https://pdgauvreau.github.io/06-completed-cw-game/',
         github: 'https://github.com/pdgauvreau/06-completed-cw-game'
       },
-      image: '/Charity_Water_Game.png'
+      image: `${BASE_URL}Charity_Water_Game.png`
     }
   ]
 

@@ -1,11 +1,13 @@
 const Bio = () => {
+  const BASE_URL = import.meta.env.BASE_URL
+  
   return (
     <section id="bio" className="fade-in">
       <h2 data-aos="fade-up">Bio</h2>
       <div className="bio">
         <div className="bio-content" data-aos="fade-up" data-aos-delay="100">
           <div className="bio-image">
-            <img src="/img/pfp.jpg" alt="Paul David Gauvreau" />
+            <img src={`${BASE_URL}img/pfp.jpg`} alt="Paul David Gauvreau" />
           </div>
           <div className="bio-text">
             <p>
