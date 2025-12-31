@@ -11,6 +11,22 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: 'TATE AI',
+      role: 'Current Project | In Development',
+      description: `TATE AI is a modern, beautiful website showcasing an AI platform - built with React, Vite, and Framer Motion. This project represents my latest work in creating cutting-edge, interactive web experiences.
+
+      The website features a minimalist design inspired by leading AI companies, with smooth animations, interactive UI components, and beautiful gradient effects. I'm currently developing this project, focusing on creating a fast, responsive, and visually stunning platform that effectively communicates the power and potential of AI technology.
+
+      The project emphasizes modern web development practices, including component-based architecture, performance optimization, and responsive design principles that work seamlessly across all devices.`,
+      tech: ['React', 'Vite', 'Framer Motion', 'JavaScript', 'CSS3', 'Modern Web Design', 'Animation', 'UI/UX'],
+      links: {
+        github: 'https://github.com/pdgauvreau/TateAI'
+      },
+      isCurrent: true,
+      isNew: true
+    },
+    {
+      id: 2,
       title: 'Dishbook',
       role: 'Full-Stack Developer',
       description: `Dishbook is a recipe sharing website that provides a cozy place to save family recipes, discover new favorites, and swap variations that feel like home. Users can start with a trusted dish, record tweaks and modifications, and see what other cooks tried.
@@ -25,7 +41,7 @@ const Projects = () => {
       }
     },
     {
-      id: 2,
+      id: 3,
       title: 'Lunchbox',
       role: 'Founder & Front-End Developer | July 2024 - Present',
       description: `Lunchbox is an ongoing project focused on making meal planning more intuitive and enjoyable.  
@@ -37,7 +53,7 @@ const Projects = () => {
       links: null
     },
     {
-      id: 3,
+      id: 4,
       title: 'Salesforce Dashboards at Catholic Answers',
       role: 'IT Intern | May 2025 - July 2025 | El Cajon, CA',
       description: `At Catholic Answers, I worked within the IT and Development teams to improve how donor and sales data was visualized and utilized.  
@@ -65,7 +81,7 @@ const Projects = () => {
       }
     },
     {
-      id: 5,
+      id: 6,
       title: 'charity: water Branded Web Game',
       role: 'Independent Project | October 2025',
       description: `I designed and developed an interactive web game to raise awareness for charity: water's mission to bring clean water to communities in need.
@@ -169,9 +185,18 @@ const Projects = () => {
               key={project.id}
               className={`project-card ${getCardClass(index)}`}
               style={getCardStyle(index)}
+              data-current-project={project.isCurrent ? "true" : "false"}
             >
               <>
-                <h3>{project.title}</h3>
+                <div className="project-header">
+                  <h3>{project.title}</h3>
+                  {project.isCurrent && (
+                    <span className="project-badge current">Current Project</span>
+                  )}
+                  {project.isNew && !project.isCurrent && (
+                    <span className="project-badge new">New</span>
+                  )}
+                </div>
                 {project.role && <p className="project-role">{project.role}</p>}
                 {project.image && (
                   <div className="project-image-top">
@@ -189,12 +214,16 @@ const Projects = () => {
                 </div>
                 {project.links && (
                   <div className="project-links">
-                    <a href={project.links.demo} className="project-link" target="_blank" rel="noopener noreferrer">
-                      Live Demo
-                    </a>
-                    <a href={project.links.github} className="project-link" target="_blank" rel="noopener noreferrer">
-                      GitHub
-                    </a>
+                    {project.links.demo && (
+                      <a href={project.links.demo} className="project-link" target="_blank" rel="noopener noreferrer">
+                        Live Demo
+                      </a>
+                    )}
+                    {project.links.github && (
+                      <a href={project.links.github} className="project-link" target="_blank" rel="noopener noreferrer">
+                        GitHub
+                      </a>
+                    )}
                   </div>
                 )}
               </>
