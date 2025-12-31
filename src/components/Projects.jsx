@@ -20,7 +20,7 @@ const Projects = () => {
       The project emphasizes modern web development practices, including component-based architecture, performance optimization, and responsive design principles that work seamlessly across all devices.`,
       tech: ['React', 'Vite', 'Framer Motion', 'JavaScript', 'CSS3', 'Modern Web Design', 'Animation', 'UI/UX'],
       links: {
-        github: 'https://github.com/pdgauvreau/TateAI'
+        demo: 'https://pdgauvreau.github.io/TateAI/'
       },
       isCurrent: true,
       isNew: true
