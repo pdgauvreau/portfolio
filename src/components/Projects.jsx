@@ -42,46 +42,6 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: 'Lunchbox',
-      role: 'Founder & Front-End Developer | July 2024 - Present',
-      description: `Lunchbox is an ongoing project focused on making meal planning more intuitive and enjoyable.  
-
-      As the founder and front-end developer, I lead the design and development process, manage a small team, and guide the overall direction of the app. I'm responsible for building an engaging user interface, developing the front-end architecture, and ensuring that design and functionality work seamlessly together.  
-
-      My goal with Lunchbox is to create a polished, user-friendly platform that simplifies how people plan and organize their meals.`,
-      tech: ['React', 'JavaScript', 'Python', 'Firebase', 'Figma'],
-      links: null
-    },
-    {
-      id: 4,
-      title: 'Salesforce Dashboards at Catholic Answers',
-      role: 'IT Intern | May 2025 - July 2025 | El Cajon, CA',
-      description: `At Catholic Answers, I worked within the IT and Development teams to improve how donor and sales data was visualized and utilized.  
-
-      I developed Salesforce dashboards and reports that tracked monthly activity, revealed key performance trends, and helped identify under-engaged donor segments.  
-
-      In addition, I collaborated with staff to refine data processes and streamline report generation for greater clarity and efficiency.`,
-      tech: ['Salesforce', 'Python', 'SQL', 'Snowflake'],
-      links: null
-    },
-    {
-      id: 4,
-      title: 'Intel Sustainability Website',
-      description: `Developed a comprehensive web application highlighting Intel's sustainability initiatives. 
-
-      The site features a fully responsive design with interactive elements that emphasize the company's 
-      environmental commitments and green technology efforts.
-      
-      The project focused on creating a clean, 
-      accessible interface that effectively communicates complex sustainability data in a user-friendly format.`,
-      tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
-      links: {
-        demo: 'https://pdgauvreau.github.io/02-prj-intel-sustainability/',
-        github: 'https://github.com/pdgauvreau/02-prj-intel-sustainability'
-      }
-    },
-    {
-      id: 6,
       title: 'charity: water Branded Web Game',
       role: 'Independent Project | October 2025',
       description: `I designed and developed an interactive web game to raise awareness for charity: water's mission to bring clean water to communities in need.
