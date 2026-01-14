@@ -1,13 +1,8 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
 import LinkPreview from './LinkPreview'
 
 const BASE_URL = import.meta.env.BASE_URL
 
 const Projects = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoRotating, setIsAutoRotating] = useState(true)
-  const carouselRef = useRef(null)
-
   const projects = [
     {
       id: 1,
@@ -58,104 +53,76 @@ const Projects = () => {
     }
   ]
 
-  // Define navigation functions first
-  const goToNext = useCallback(() => {
-    setIsAutoRotating(false)
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length)
-  }, [projects.length])
+  const currentProject = projects.find((p) => p.isCurrent) || projects[0]
+  const pastProjects = projects.filter((p) => p.id !== currentProject.id)
 
-  const goToPrevious = useCallback(() => {
-    setIsAutoRotating(false)
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length)
-  }, [projects.length])
+  const renderProjectLinks = (project, primaryLabel) => {
+    if (!project.links) return null
 
-  const goToSlide = useCallback((index) => {
-    setIsAutoRotating(false)
-    setCurrentIndex(index)
-  }, [])
-
-  // Auto-rotate every 6 seconds
-  useEffect(() => {
-    if (!isAutoRotating) return
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length)
-    }, 6000)
-
-    return () => clearInterval(interval)
-  }, [isAutoRotating, projects.length])
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') {
-        goToPrevious()
-      } else if (e.key === 'ArrowRight') {
-        goToNext()
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [goToNext, goToPrevious])
-
-  const getCardClass = (index) => {
-    // Calculate the shortest distance (handling circular array)
-    let diff = index - currentIndex
-    if (diff > projects.length / 2) {
-      diff = diff - projects.length
-    } else if (diff < -projects.length / 2) {
-      diff = diff + projects.length
-    }
-    
-    const absDiff = Math.abs(diff)
-    if (absDiff === 0) return 'active'
-    if (absDiff === 1) return 'adjacent'
-    return 'hidden'
-  }
-
-  const getCardStyle = (index) => {
-    // Calculate the shortest distance (handling circular array)
-    let diff = index - currentIndex
-    if (diff > projects.length / 2) {
-      diff = diff - projects.length
-    } else if (diff < -projects.length / 2) {
-      diff = diff + projects.length
-    }
-    
-    const absDiff = Math.abs(diff)
-    
-    if (absDiff === 0) {
-      return { transform: 'translateX(0) scale(1)', zIndex: 3 }
-    } else if (absDiff === 1) {
-      const translateX = diff > 0 ? '55%' : '-55%'
-      return { transform: `translateX(${translateX}) scale(0.9)`, zIndex: 2 }
-    } else {
-      return { transform: 'translateX(0) scale(0.8)', zIndex: 1 }
-    }
+    return (
+      <div className="project-links">
+        {project.links.demo && (
+          <a href={project.links.demo} className="project-link" target="_blank" rel="noopener noreferrer">
+            {primaryLabel || 'Live Demo'}
+          </a>
+        )}
+        {project.links.github && (
+          <a href={project.links.github} className="project-link" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        )}
+      </div>
+    )
   }
 
   return (
     <section id="projects" className="fade-in">
       <h2 data-aos="fade-up">Projects</h2>
-      <div className="projects-carousel-container" ref={carouselRef}>
-        <div className="projects-carousel">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`project-card ${getCardClass(index)}`}
-              style={getCardStyle(index)}
-              data-current-project={project.isCurrent ? "true" : "false"}
-            >
-              <>
+
+      <div className="projects-sections">
+        <div className="projects-subsection">
+          <h3 className="projects-subtitle">Current Project</h3>
+
+          <div className="project-card project-card-featured" data-current-project="true">
+            <div className="project-featured-grid">
+              <div className="project-featured-text">
+                <div className="project-header">
+                  <h3>{currentProject.title}</h3>
+                  <span className="project-badge current">Current Project</span>
+                </div>
+                {currentProject.role && <p className="project-role">{currentProject.role}</p>}
+
+                <p>{currentProject.description}</p>
+
+                <div className="tech-stack">
+                  {currentProject.tech.map((tech, i) => (
+                    <span key={i} className="tech-tag">{tech}</span>
+                  ))}
+                </div>
+
+                {renderProjectLinks(currentProject, 'Visit TATE AI')}
+              </div>
+
+              <div className="project-featured-media">
+                {currentProject.links?.demo && (
+                  <div className="project-preview-featured">
+                    <LinkPreview url={currentProject.links.demo} />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="projects-subsection">
+          <h3 className="projects-subtitle">Past Projects</h3>
+
+          <div className="projects-grid">
+            {pastProjects.map((project) => (
+              <div key={project.id} className="project-card project-card-static">
                 <div className="project-header">
                   <h3>{project.title}</h3>
-                  {project.isCurrent && (
-                    <span className="project-badge current">Current Project</span>
-                  )}
-                  {project.isNew && !project.isCurrent && (
-                    <span className="project-badge new">New</span>
-                  )}
+                  {project.isNew && <span className="project-badge new">New</span>}
                 </div>
                 {project.role && <p className="project-role">{project.role}</p>}
                 {project.image && (
@@ -172,51 +139,10 @@ const Projects = () => {
                     <span key={i} className="tech-tag">{tech}</span>
                   ))}
                 </div>
-                {project.links && (
-                  <div className="project-links">
-                    {project.links.demo && (
-                      <a href={project.links.demo} className="project-link" target="_blank" rel="noopener noreferrer">
-                        Live Demo
-                      </a>
-                    )}
-                    {project.links.github && (
-                      <a href={project.links.github} className="project-link" target="_blank" rel="noopener noreferrer">
-                        GitHub
-                      </a>
-                    )}
-                  </div>
-                )}
-              </>
-            </div>
-          ))}
-        </div>
-        <button 
-          className="carousel-arrow carousel-arrow-left" 
-          onClick={goToPrevious}
-          aria-label="Previous project"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
-        <button 
-          className="carousel-arrow carousel-arrow-right" 
-          onClick={goToNext}
-          aria-label="Next project"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
-        <div className="carousel-indicators">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              className={`carousel-indicator ${index === currentIndex ? 'active' : ''}`}
-              onClick={() => goToSlide(index)}
-              aria-label={`Go to project ${index + 1}`}
-            />
-          ))}
+                {renderProjectLinks(project)}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

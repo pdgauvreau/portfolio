@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 
 const ResumeModal = ({ isOpen, onClose }) => {
+  const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -38,10 +40,20 @@ const ResumeModal = ({ isOpen, onClose }) => {
           ×
         </button>
         <iframe
-          src="/resume.pdf"
+          src={resumeUrl}
           className="resume-modal-iframe"
           title="Resume"
         />
+        <div style={{ padding: '0.75rem 1.25rem', textAlign: 'center' }}>
+          <a
+            href={resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-link"
+          >
+            Open / Download Resume
+          </a>
+        </div>
       </div>
     </div>
   )

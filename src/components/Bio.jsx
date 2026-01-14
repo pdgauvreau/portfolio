@@ -11,7 +11,7 @@ const Bio = () => {
           </div>
           <div className="bio-text">
             <p>
-              Software Development student at the University of Utah passionate about creating intuitive, user-focused applications. Currently developing Lunchbox, a meal-planning platform designed to make organizing meals effortless. Always exploring new ways to blend design, technology, and creativity.
+              Software Development student at the University of Utah passionate about creating intuitive, user-focused applications. Currently working on <strong>TATE AI</strong> — an AI agent you can converse with about school topics as an impactful way of studying. Always exploring new ways to blend design, technology, and creativity.
             </p>
             <p>
               <br /> When I'm not coding, you can find me exploring new technologies, playing volleyball, or watching redzone football.

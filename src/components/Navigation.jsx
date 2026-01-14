@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import ResumeModal from './ResumeModal'
 
-const Navigation = () => {
+const Navigation = ({ page = 'home' }) => {
+  const BASE_URL = import.meta.env.BASE_URL
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false)
@@ -32,8 +33,8 @@ const Navigation = () => {
   }, [])
 
   const handleLinkClick = (e, href) => {
-    e.preventDefault()
     if (href.startsWith('#')) {
+      e.preventDefault()
       const target = document.querySelector(href)
       if (target) {
         const offsetTop = target.offsetTop - 80
@@ -64,18 +65,33 @@ const Navigation = () => {
     }
   }
 
-  const navLinks = [
-    { href: '#hero', label: 'Home' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#bio', label: 'Bio' },
-    { href: '#about', label: 'About' },
-    { href: '#fun', label: 'The Fun Stuff' },
-    { href: '#contact', label: 'Contact' },
-    { href: '#resume', label: 'Resume', isResume: true },
-    { href: 'https://www.linkedin.com/in/paul-gauvreau/', label: 'LinkedIn', external: true },
-    { href: 'https://github.com/pdgauvreau', label: 'GitHub', external: true },
-    { href: 'https://app.joinhandshake.com/profiles/wv89gy', label: 'Handshake', external: true }
-  ]
+  const navLinks =
+    page === 'blog'
+      ? [
+          { href: BASE_URL, label: 'Home' },
+          { href: `${BASE_URL}#projects`, label: 'Projects' },
+          { href: `${BASE_URL}#bio`, label: 'Bio' },
+          { href: `${BASE_URL}#about`, label: 'About' },
+          { href: `${BASE_URL}#contact`, label: 'Contact' },
+          { href: '#resume', label: 'Resume', isResume: true },
+          { href: `${BASE_URL}blog.html`, label: 'Blog', isPage: true },
+          { href: 'https://www.linkedin.com/in/paul-gauvreau/', label: 'LinkedIn', external: true },
+          { href: 'https://github.com/pdgauvreau', label: 'GitHub', external: true },
+          { href: 'https://app.joinhandshake.com/profiles/wv89gy', label: 'Handshake', external: true }
+        ]
+      : [
+          { href: '#hero', label: 'Home' },
+          { href: '#projects', label: 'Projects' },
+          { href: '#bio', label: 'Bio' },
+          { href: '#about', label: 'About' },
+          { href: '#fun', label: 'The Fun Stuff' },
+          { href: '#contact', label: 'Contact' },
+          { href: '#resume', label: 'Resume', isResume: true },
+          { href: `${BASE_URL}blog.html`, label: 'Blog', isPage: true },
+          { href: 'https://www.linkedin.com/in/paul-gauvreau/', label: 'LinkedIn', external: true },
+          { href: 'https://github.com/pdgauvreau', label: 'GitHub', external: true },
+          { href: 'https://app.joinhandshake.com/profiles/wv89gy', label: 'Handshake', external: true }
+        ]
 
   return (
     <>
@@ -89,8 +105,14 @@ const Navigation = () => {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`nav-link ${link.external ? 'external' : ''} ${activeSection === link.href.substring(1) ? 'active' : ''}`}
-                  onClick={link.isResume ? handleResumeClick : (link.external ? undefined : (e) => handleLinkClick(e, link.href))}
+                  className={`nav-link ${link.external ? 'external' : ''} ${link.href.startsWith('#') && activeSection === link.href.substring(1) ? 'active' : ''}`}
+                  onClick={
+                    link.isResume
+                      ? handleResumeClick
+                      : link.external || link.isPage
+                        ? undefined
+                        : (e) => handleLinkClick(e, link.href)
+                  }
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                 >
