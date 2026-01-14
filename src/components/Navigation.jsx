@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import ResumeModal from './ResumeModal'
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false)
 
   useEffect(() => {
     const updateActiveNavLink = () => {
@@ -53,6 +55,15 @@ const Navigation = () => {
     document.body.classList.toggle('menu-open')
   }
 
+  const handleResumeClick = (e) => {
+    e.preventDefault()
+    setIsResumeModalOpen(true)
+    if (window.innerWidth <= 768) {
+      setIsMenuOpen(false)
+      document.body.classList.remove('menu-open')
+    }
+  }
+
   const navLinks = [
     { href: '#hero', label: 'Home' },
     { href: '#projects', label: 'Projects' },
@@ -60,6 +71,7 @@ const Navigation = () => {
     { href: '#about', label: 'About' },
     { href: '#fun', label: 'The Fun Stuff' },
     { href: '#contact', label: 'Contact' },
+    { href: '#resume', label: 'Resume', isResume: true },
     { href: 'https://www.linkedin.com/in/paul-gauvreau/', label: 'LinkedIn', external: true },
     { href: 'https://github.com/pdgauvreau', label: 'GitHub', external: true },
     { href: 'https://app.joinhandshake.com/profiles/wv89gy', label: 'Handshake', external: true }
@@ -78,7 +90,7 @@ const Navigation = () => {
                 <a
                   href={link.href}
                   className={`nav-link ${link.external ? 'external' : ''} ${activeSection === link.href.substring(1) ? 'active' : ''}`}
-                  onClick={link.external ? undefined : (e) => handleLinkClick(e, link.href)}
+                  onClick={link.isResume ? handleResumeClick : (link.external ? undefined : (e) => handleLinkClick(e, link.href))}
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                 >
@@ -94,6 +106,7 @@ const Navigation = () => {
           </div>
         </div>
       </nav>
+      <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} />
     </>
   )
 }
