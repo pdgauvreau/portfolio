@@ -4,282 +4,428 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P. David Gauvreau - Portfolio</title>
+    <meta name="description" content="Paul David Gauvreau — software developer and UI/UX designer at the University of Utah. Founder of Lunchbox. Open to a New Grad Software Developer role.">
+    <meta name="theme-color" content="#f6f1e7">
+    <meta property="og:title" content="P. David Gauvreau — The Gauvreau Gazette">
+    <meta property="og:description" content="All the code that's fit to ship. Software developer & UI/UX designer. Open to a New Grad Software Developer role.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23f6f1e7'/%3E%3Crect x='4' y='4' width='56' height='56' rx='3' fill='none' stroke='%231c1812' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='30' font-weight='700' fill='%231c1812' text-anchor='middle'%3EPG%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Oswald:wght@400;500;600&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <!-- Link to the CSS file for styling -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="#hero">Home</a></li>
+    <div class="bg-grain" aria-hidden="true"></div>
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation: the sections bar -->
+    <nav id="nav">
+        <a class="brand" href="#hero" aria-label="Back to the front page">The Gauvreau Gazette</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#hero" class="active">Front Page</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#bio">Bio</a></li>
+            <li><a href="#fun">Fun</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="https://www.linkedin.com/in/paul-gauvreau/" target="_blank">LinkedIn</a></li>
+            <li><a class="ext" href="https://www.linkedin.com/in/paul-gauvreau/" target="_blank" rel="noopener">LinkedIn&nbsp;&#8599;</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1>P. David Gauvreau</h1>
-            <p>Undergrad @ University of Utah, Software Developer</p>
+    <!-- Front Page -->
+    <header id="hero" class="front-page">
+        <div class="container">
+            <div class="topbar">
+                <span>Vol. I &middot; No. 1</span>
+                <span class="topbar-date">Thursday, June 12, 2026</span>
+                <span>Free of Charge</span>
+            </div>
+
+            <div class="masthead-row" data-speed-top="0.18">
+                <div class="masthead-block">
+                    <p class="masthead reveal">The Gauvreau Gazette</p>
+                    <p class="tagline reveal">&ldquo;All the Code That&rsquo;s Fit to Ship&rdquo;</p>
+                </div>
+            </div>
+
+            <div class="lead-story" data-speed-top="0.08">
+                <p class="overline reveal">&#9733; Extra &middot; Extra &#9733;</p>
+                <h1 class="headline reveal">P. David Gauvreau</h1>
+                <p class="deck reveal">Software Developer Intern @ Milliman &mdash; B.S. Software Development, University of Utah, December 2026</p>
+                <p class="dateline reveal"><span>THE NEWSROOM &mdash;</span> Currently shipping C# and .NET for financial risk systems at Milliman; open to a New Grad Software Developer role upon graduating this December. Sources describe him as &ldquo;basically allergic to standing still.&rdquo;</p>
+                <div class="hero-cta reveal">
+                    <a href="Paul_Gauvreau_Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener">Download the R&eacute;sum&eacute;</a>
+                    <a href="#experience" class="btn btn-ghost">Read the Experience</a>
+                    <a href="#contact" class="btn btn-ghost">Send a Letter</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breaking news ticker -->
+    <div class="ticker" aria-hidden="true">
+        <span class="ticker-label">Breaking</span>
+        <div class="ticker-viewport">
+            <div class="ticker-track">
+                <span>Fly the W</span>
+                <span>Da Bears</span>
+                <span>Italia</span>
+                <span>Golf</span>
+                <span>Pickleball</span>
+                <span>Volleyball</span>
+                <span>Night Fury sightings</span>
+                <span>RedZone Sundays</span>
+                <span>Mistborn</span>
+                <span>Lunchbox</span>
+                <span>charity: water</span>
+                <span>UI/UX</span>
+            </div>
+        </div>
+    </div>
+
+    <main>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <span class="ghost-letter ghost-right" data-speed="0.16" aria-hidden="true">A</span>
+        <div class="container">
+            <div class="section-head reveal">
+                <p class="kicker">Section A &middot; The Career Desk</p>
+                <h2>Experience</h2>
+            </div>
+
+            <div class="projects-grid">
+                <article class="article reveal">
+                    <p class="now-slug">Developing Story</p>
+                    <h3>Milliman, Inc.</h3>
+                    <p class="byline">Software Developer Intern, Financial Risk Management | May 2026 &ndash; Aug 2026</p>
+                    <ul class="news-list">
+                        <li>Developing software for financial risk management systems at a leading global actuarial and consulting firm, with hands-on exposure to fintech workflows and enterprise-scale codebases.</li>
+                        <li>Collaborating with senior engineers to design, implement, and test components to production-level standards, applying C# and .NET remoting with TCP for network communication.</li>
+                        <li>Working within a cross-functional engineering team on systems supporting risk modeling and trading operations.</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">TCP Networking</span>
+                        <span class="tech-tag">Fintech</span>
+                    </div>
+                </article>
+
+                <article class="article reveal">
+                    <h3>Catholic Answers</h3>
+                    <p class="byline">Information Technology Intern | May 2025 &ndash; July 2025</p>
+                    <ul class="news-list">
+                        <li>Evaluated 5+ database analytics platforms (Snowflake, Tableau, CesarAI) and delivered a recommendation aligned with organizational goals and budget constraints.</li>
+                        <li>Designed and deployed Salesforce dashboards with the Directors of Marketing and Development, enabling real-time tracking of donor activity and sales performance metrics.</li>
+                        <li>Participated in cross-functional strategic meetings, gaining exposure to enterprise-level workflows and stakeholder communication.</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Salesforce</span>
+                        <span class="tech-tag">Snowflake</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Tableau</span>
+                    </div>
+                </article>
+
+                <article class="article reveal">
+                    <h3>HelloI</h3>
+                    <p class="byline">Student Developer | Jan 2025 &ndash; July 2025</p>
+                    <ul class="news-list">
+                        <li>Built a Python desktop application capturing dual-channel audio for transcription workflows &mdash; a complete end-to-end solution from requirements through deployment.</li>
+                        <li>Evaluated 3+ transcription APIs (OpenAI Whisper, AssemblyAI) across accuracy, latency, and cost to select the optimal integration.</li>
+                        <li>Implemented API integration and a user-friendly GUI, reducing manual transcription overhead.</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">OpenAI Whisper</span>
+                        <span class="tech-tag">GUI</span>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="fade-in">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>Lunchbox</h3>
-                <p class="project-role">Founder & Front-End Developer | July 2024 - Present</p>
-                <p>Lunchbox is an ongoing project focused on making meal planning more intuitive and enjoyable.  
-
-                As the founder and front-end developer, I lead the design and development process, manage a small team, and guide the overall direction of the app. I’m responsible for building an engaging user interface, developing the front-end architecture, and ensuring that design and functionality work seamlessly together.  
-
-                My goal with Lunchbox is to create a polished, user-friendly platform that simplifies how people plan and organize their meals.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Firebase</span>
-                    <span class="tech-tag">Figma</span>
-                </div>
+    <section id="projects" class="section">
+        <span class="ghost-letter ghost-left" data-speed="0.18" aria-hidden="true">B</span>
+        <div class="container">
+            <div class="section-head reveal">
+                <p class="kicker">Section B &middot; The Work</p>
+                <h2>Projects</h2>
             </div>
 
-            <div class="project-card">
-                <h3>Salesforce Dashboards at Catholic Answers</h3>
-                <p class="project-role">IT Intern | May 2025 - July 2025 | El Cajon, CA</p>
-                <p>At Catholic Answers, I worked within the IT and Development teams to improve how donor and sales data was visualized and utilized.  
+            <div class="projects-grid">
+                <article class="article reveal">
+                    <h3>TateAI &mdash; AI-Powered Study Assistant</h3>
+                    <p class="byline">Independent Project | December 2025</p>
+                    <p>Built an AI-driven study assistant with real-time speech transcription, enabling low-latency voice conversations with an AI tutor focused on class-specific content.
 
-                I developed Salesforce dashboards and reports that tracked monthly activity, revealed key performance trends, and helped identify under-engaged donor segments.  
+                    Integrated speech-to-text and conversational AI APIs with context-aware prompting to guide students through explanations and concept reinforcement.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Speech APIs</span>
+                        <span class="tech-tag">Conversational AI</span>
+                    </div>
+                </article>
 
-                In addition, I collaborated with staff to refine data processes and streamline report generation for greater clarity and efficiency.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Salesforce</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">SQL</span>
-                    <span class="tech-tag">Snowflake</span>
-                </div>
+                <article class="article reveal">
+                    <h3>Lunchbox</h3>
+                    <p class="byline">Founder &amp; Front-End Developer | July 2024 - Present</p>
+                    <p>Lunchbox is an ongoing project focused on making meal planning more intuitive and enjoyable.
+
+                    As the founder and front-end developer, I lead the design and development process, manage a small team, and guide the overall direction of the app. I&rsquo;m responsible for building an engaging user interface, developing the front-end architecture, and ensuring that design and functionality work seamlessly together.
+
+                    My goal with Lunchbox is to create a polished, user-friendly platform that simplifies how people plan and organize their meals.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Figma</span>
+                    </div>
+                </article>
+
+                <article class="article reveal">
+                    <h3>Intel Sustainability Website</h3>
+                    <p class="byline">Web Project</p>
+                    <p>
+                    Developed a comprehensive web application highlighting Intel&rsquo;s sustainability initiatives.
+
+                    The site features a fully responsive design with interactive elements that emphasize the company&rsquo;s
+                    environmental commitments and green technology efforts.
+
+                    The project focused on creating a clean,
+                    accessible interface that effectively communicates complex sustainability data in a user-friendly format.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Responsive Design</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://pdgauvreau.github.io/02-prj-intel-sustainability/" class="project-link" target="_blank" rel="noopener">Live Demo</a>
+                        <a href="https://github.com/pdgauvreau/02-prj-intel-sustainability" class="project-link" target="_blank" rel="noopener">GitHub</a>
+                    </div>
+                </article>
             </div>
 
-            <div class="project-card">
-                <h3>Intel Sustainability Website</h3>
-                <p>
-                Developed a comprehensive web application highlighting Intel’s sustainability initiatives. 
+            <!-- Feature story -->
+            <article class="feature-story reveal">
+                <p class="feature-slug">Feature Story</p>
+                <div class="feature-wrapper">
+                    <div class="feature-text">
+                        <h3>charity: water Branded Web Game</h3>
+                        <p class="byline">Independent Project | October 2025</p>
+                        <p>I designed and developed an interactive web game to raise awareness for charity: water's mission to bring clean water to communities in need.
 
-                The site features a fully responsive design with interactive elements that emphasize the company’s 
-                environmental commitments and green technology efforts.
-                
-                The project focused on creating a clean, 
-                accessible interface that effectively communicates complex sustainability data in a user-friendly format.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Responsive Design</span>
+                        The project centered on creating a cohesive brand experience that authentically represented charity: water's identity&mdash;implementing their exact brand colors (#FFC907, #2E9DF7), using Proxima Nova typography throughout, and extending their signature gradient aesthetic across the entire interface.
+
+                        The gameplay reinforces the organization's mission through a water drop-catching mechanic, while integrated donation links convert player engagement into direct support for clean water initiatives.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">Brand Design</span>
+                            <span class="tech-tag">UI/UX</span>
+                        </div>
+                    </div>
+                    <figure class="feature-figure">
+                        <div class="img-frame">
+                            <div class="img-clip">
+                                <img src="Charity_Water_Game.png" alt="charity: water game interface showing water drop gameplay">
+                            </div>
+                        </div>
+                        <figcaption>Pictured: the drop-catching interface, set in charity: water&rsquo;s brand colors. Photo: staff.</figcaption>
+                        <div class="project-links">
+                            <a href="https://pdgauvreau.github.io/06-completed-cw-game/" class="project-link" target="_blank" rel="noopener">Live Demo</a>
+                            <a href="https://github.com/pdgauvreau/06-completed-cw-game" class="project-link" target="_blank" rel="noopener">GitHub</a>
+                        </div>
+                    </figure>
                 </div>
-                <div class="project-links">
-                    <a href="https://pdgauvreau.github.io/02-prj-intel-sustainability/" class="project-link">Live Demo</a>
-                    <a href="https://github.com/pdgauvreau/02-prj-intel-sustainability" class="project-link">GitHub</a>
-                </div>
-            </div>
+            </article>
         </div>
-
-        
-     <div class="project-card">
-    <div class="project-content-wrapper">
-        <div class="project-text">
-            <h3>charity: water Branded Web Game</h3>
-            <p class="project-role">Independent Project | October 2025</p>
-            <p>I designed and developed an interactive web game to raise awareness for charity: water's mission to bring clean water to communities in need.
-
-            The project centered on creating a cohesive brand experience that authentically represented charity: water's identity—implementing their exact brand colors (#FFC907, #2E9DF7), using Proxima Nova typography throughout, and extending their signature gradient aesthetic across the entire interface.
-
-            The gameplay reinforces the organization's mission through a water drop-catching mechanic, while integrated donation links convert player engagement into direct support for clean water initiatives.
-            </p>
-            <div class="tech-stack">
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">HTML/CSS</span>
-                <span class="tech-tag">Brand Design</span>
-                <span class="tech-tag">UI/UX</span>
-            </div>
-        </div>
-        <div class="project-image">
-            <img src="Charity_Water_Game.png" alt="charity: water game interface showing water drop gameplay">
-            <div class="project-links">
-           <a href="https://pdgauvreau.github.io/06-completed-cw-game/" class="project-link">Live Demo</a>
-           <a href="https://github.com/pdgauvreau/06-completed-cw-game" class="project-link">GitHub</a>
-        </div>
-        </div>
-    </div>
-    </div>
-     
     </section>
 
-
     <!-- Bio Section -->
-    <section id="bio" class="fade-in">
-        <h2>Bio</h2>
-        <div class="bio">
-            <div class="bio-content">
-                <div class="bio-image">
-                    <img src="img/pfp.jpg" alt="Paul David Gauvreau" />
-                </div>
-                <div class="bio-text">
-                    <p>Software Development student at the University of Utah passionate about creating intuitive, user-focused applications. Currently developing Lunchbox, a meal-planning platform designed to make organizing meals effortless. Always exploring new ways to blend design, technology, and creativity. </p>
-                    <p> <br> When I'm not coding, you can find me exploring new technologies, playing volleyball, or watching redzone football.</p>
+    <section id="bio" class="section">
+        <span class="ghost-letter ghost-right" data-speed="0.2" aria-hidden="true">C</span>
+        <div class="container">
+            <div class="section-head reveal">
+                <p class="kicker">Section C &middot; Meet the Editor</p>
+                <h2>Bio</h2>
+            </div>
+
+            <div class="bio reveal">
+                <div class="bio-content">
+                    <figure class="bio-figure">
+                        <div class="img-frame">
+                            <div class="img-clip">
+                                <img src="img/pfp.jpg" alt="Paul David Gauvreau" />
+                            </div>
+                        </div>
+                        <figcaption>The editor, somewhere near the red zone.</figcaption>
+                    </figure>
+                    <div class="bio-text">
+                        <p>Software Development student at the University of Utah (B.S. expected December 2026), currently a Software Developer Intern at Milliman building financial risk management systems in C# and .NET. Founder of Lunchbox, a meal-planning platform designed to make organizing meals effortless. Always exploring new ways to blend design, technology, and creativity. </p>
+                        <p>When I'm not coding, you can find me exploring new technologies, playing volleyball, or watching redzone football.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- The Fun Section -->
-<section id="fun" class="fade-in">
-    <h2>The Fun Stuff</h2>
-    
-    <!-- Songs I Like Right Now -->
-    <div class="fun-subsection">
-        <h3>Songs I Like Right Now</h3>
-        <div class="songs-grid">
-            <div class="song-item">
-                <h4>Loose - Daniel Caesar</h4>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Eakt1tkxIXc?si=o3zd9fXiPaBfUcm6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <div class="song-item">
-                <h4>Restless Mind - Sam Barber</h4>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/W6JVKpz91zk?si=bTDaQAc4lXD7FfFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
-            </div>
-            <div class="song-item">
-                <h4>This Is Berk - John Powell (How to Train Your Dragon)</h4>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/hNFM2f4BvAo?si=gd9IW6mvwTIdKEzd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- Podcast and Book Row -->
-    <div class="fun-subsection">
-        <div class="podcast-book-grid">
-            <!-- Podcast I Like Right Now -->
-            <div class="podcast-item">
-                <h3>Podcast I Like Right Now</h3>
-                <h4>Diary Of A CEO w/ Matthew McConaughey</h4>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/QMzxNfX-uAg?si=wb0lYgDGxHaxROev" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <section id="fun" class="section">
+        <span class="ghost-letter ghost-left" data-speed="0.14" aria-hidden="true">D</span>
+        <div class="container">
+            <div class="section-head reveal">
+                <p class="kicker">Section D &middot; Arts &amp; Leisure</p>
+                <h2>The Fun Stuff</h2>
             </div>
 
-            <!-- Book I'm Reading -->
-            <div class="book-item">
-                <h3>Book I'm Reading</h3>
-                <div class="book-content">
-                    <div class="book-cover">
-                        <img src="https://m.media-amazon.com/images/I/91+1ACqS4PL._AC_UF1000,1000_QL80_.jpg" alt="Mistborn book cover" />
+            <!-- Songs I Like Right Now -->
+            <div class="fun-subsection">
+                <h3 class="rule-title reveal"><span>Songs I Like Right Now</span></h3>
+                <div class="songs-grid">
+                    <div class="song-item reveal">
+                        <h4>Loose - Daniel Caesar</h4>
+                        <div class="embed">
+                            <iframe src="https://www.youtube.com/embed/Eakt1tkxIXc?si=o3zd9fXiPaBfUcm6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                        </div>
                     </div>
-                    <div class="book-info">
-                        <h4>Mistborn: The Final Empire</h4>
-                        <p class="book-author">by Brandon Sanderson</p>
-                        <p class="book-description">A brilliant fantasy novel about a world ruled by an immortal tyrant, a young street thief who discovers her powers, and a daring plan to ignite a revolution using magic fueled by metal.</p>
+                    <div class="song-item reveal">
+                        <h4>Restless Mind - Sam Barber</h4>
+                        <div class="embed">
+                            <iframe src="https://www.youtube.com/embed/W6JVKpz91zk?si=bTDaQAc4lXD7FfFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="song-item reveal">
+                        <h4>This Is Berk - John Powell</h4>
+                        <div class="embed">
+                            <iframe src="https://www.youtube.com/embed/hNFM2f4BvAo?si=gd9IW6mvwTIdKEzd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Podcast and Book Row -->
+            <div class="fun-subsection">
+                <div class="podcast-book-grid">
+                    <!-- Podcast I Like Right Now -->
+                    <div class="podcast-item reveal">
+                        <h3 class="rule-title"><span>Podcast I Like Right Now</span></h3>
+                        <h4>Diary Of A CEO w/ Matthew McConaughey</h4>
+                        <div class="embed">
+                            <iframe src="https://www.youtube.com/embed/QMzxNfX-uAg?si=wb0lYgDGxHaxROev" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Book I'm Reading -->
+                    <div class="book-item reveal">
+                        <h3 class="rule-title"><span>Book I&rsquo;m Reading</span></h3>
+                        <div class="book-content">
+                            <figure class="book-cover">
+                                <img src="https://covers.openlibrary.org/b/isbn/9780765350381-L.jpg" alt="Mistborn book cover" loading="lazy" referrerpolicy="no-referrer" />
+                            </figure>
+                            <div class="book-info">
+                                <h4>Mistborn: The Final Empire</h4>
+                                <p class="book-author">by Brandon Sanderson</p>
+                                <p class="book-description">A brilliant fantasy novel about a world ruled by an immortal tyrant, a young street thief who discovers her powers, and a daring plan to ignite a revolution using magic fueled by metal.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- About Me Section -->
-    <section id="about" class="fade-in">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p class="code-greeting">Println("Hello, world!");</p>
-                <p>Hey, I'm Paul — a Software Development student at the University of Utah who's basically allergic to standing still. I love building tools, apps, and interfaces that make people smile (or at least stop clicking the refresh button out of frustration).</p>
-                <p>I live at the intersection of "does it work?" and "does it look good?" Whether I'm designing a dashboard, coding up a new idea, or tinkering with front-end designs in React, I'm all about learning fast and building things that <em>feel right</em> to use.</p>
-                <p>At my core, I'm a problem-solver with a creative streak. My projects range from audio capture apps in Python to full-on meal planning platforms that make daily life a little simpler (and tastier). I bring energy, curiosity, and a "what if we tried THIS?" mindset to every team I join.</p>
-                <p>Currently, I'm looking for <strong>Summer and Fall 2026 software development or UI/UX design internships</strong> where I can create meaningful user experiences, write clean code, and collaborate with people who inspire me.</p>
+    <section id="about" class="section">
+        <span class="ghost-letter ghost-right" data-speed="0.18" aria-hidden="true">E</span>
+        <div class="container">
+            <div class="section-head reveal">
+                <p class="kicker">Section E &middot; Editorial</p>
+                <h2>About Me</h2>
             </div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <div class="skill-icon">🎨</div>
-                <h3>UI/UX Design</h3>
-                <p>Creating intuitive and visually appealing user interfaces</p>
+
+            <div class="about-content reveal">
+                <div class="about-text">
+                    <p class="code-greeting">Println("Hello, world!");<span class="caret"></span></p>
+                    <p>Hey, I'm Paul &mdash; a Software Development student at the University of Utah who's basically allergic to standing still. I love building tools, apps, and interfaces that make people smile (or at least stop clicking the refresh button out of frustration).</p>
+                    <p>I live at the intersection of "does it work?" and "does it look good?" Whether I'm shipping C# and .NET for financial risk systems at Milliman, coding up a new idea, or tinkering with front-end designs in React, I'm all about learning fast and building things that <em>feel right</em> to use.</p>
+                    <p>At my core, I'm a problem-solver with a creative streak. My projects range from audio capture apps in Python to full-on meal planning platforms that make daily life a little simpler (and tastier). I bring energy, curiosity, and a "what if we tried THIS?" mindset to every team I join.</p>
+                    <p>Currently, I'm looking for a <strong>New Grad Software Developer role</strong> where I can create meaningful user experiences, write clean code, and collaborate with people who inspire me.</p>
+                </div>
             </div>
-            <div class="skill-item">
-                <div class="skill-icon">⚡</div>
-                <h3>Frontend Development</h3>
-                <p>Building responsive and interactive web applications</p>
+
+            <div class="edu-notice ad reveal">
+                <div class="skill-icon">BS</div>
+                <h3>University of Utah &mdash; B.S. Software Development</h3>
+                <p class="edu-when">Expected December 2026</p>
+                <p class="edu-coursework">Coursework: Algorithms &amp; Data Structures &middot; Object-Oriented Programming &middot; Web Development &middot; Database Systems &middot; Human-Centered Design</p>
             </div>
-            <div class="skill-item">
-                <div class="skill-icon">🔧</div>
-                <h3>Backend Development</h3>
-                <p>Developing robust server-side applications and APIs</p>
+
+            <div class="skills-grid">
+                <div class="skill-item ad reveal">
+                    <div class="skill-icon">L</div>
+                    <h3>Languages</h3>
+                    <p class="skill-list">Python &middot; JavaScript &middot; Java &middot; C# &middot; SQL &middot; HTML/CSS</p>
+                </div>
+                <div class="skill-item ad reveal">
+                    <div class="skill-icon">F</div>
+                    <h3>Frameworks</h3>
+                    <p class="skill-list">React &middot; .NET &middot; Node.js</p>
+                </div>
+                <div class="skill-item ad reveal">
+                    <div class="skill-icon">T</div>
+                    <h3>Tools</h3>
+                    <p class="skill-list">Git &middot; Firebase &middot; Figma &middot; Salesforce &middot; Adobe Suite &middot; Agentic Coding</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="fade-in">
-        <h2>Contact</h2>
-        <div class="contact-content">
-            <p>Let’s build something cool — or play something fun</p>
-            <ul class="contact-links">
-                <li>📧 Email: <a href="mailto:pdgauvreau@gmail.com">pdgauvreau@gmail.com</a></li>
-                <li>🔗 LinkedIn: <a href="https://linkedin.com/in/paul-gauvreau" target="_blank">linkedin.com/in/paul-gauvreau</a></li>
-                <li>🐙 GitHub: <a href="https://github.com/pdgauvreau" target="_blank">github.com/pdgauvreau</a></li>
-                <li>📍 Learning in Salt Lake City, UT — Residing in San Diego,CA</li>
-            </ul>
+    <section id="contact" class="section">
+        <span class="ghost-letter ghost-left" data-speed="0.16" aria-hidden="true">F</span>
+        <div class="container">
+            <div class="section-head reveal">
+                <p class="kicker">Section F &middot; Letters to the Editor</p>
+                <h2>Contact</h2>
+            </div>
+
+            <div class="contact-content reveal">
+                <p class="contact-lead">Let&rsquo;s build something cool &mdash; or play something fun</p>
+                <p class="contact-sub">Tips, story ideas, and job offers gladly accepted.</p>
+                <div class="contact-cta">
+                    <a class="btn btn-primary" href="mailto:pdgauvreau@gmail.com">Email the Editor</a>
+                    <a class="btn btn-ghost" href="Paul_Gauvreau_Resume.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute; (PDF)</a>
+                    <a class="btn btn-ghost" href="https://linkedin.com/in/paul-gauvreau" target="_blank" rel="noopener">LinkedIn</a>
+                    <a class="btn btn-ghost" href="https://github.com/pdgauvreau" target="_blank" rel="noopener">GitHub</a>
+                </div>
+            </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Paul Gauvreau. All rights reserved.</p>
+        <div class="colophon">
+            <p>&copy; 2026 Paul Gauvreau. All rights reserved.</p>
+            <p class="footer-note">Printed daily, wherever there&rsquo;s Wi-Fi</p>
+        </div>
     </footer>
 
-    <script>
-        // Scroll animations
-        function handleScrollAnimations() {
-            const elements = document.querySelectorAll('.fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.remove('hidden');
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            elements.forEach(element => {
-                observer.observe(element);
-            });
-        }
-
-        // Smooth scrolling for navigation links
-        function setupSmoothScrolling() {
-            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        }
-
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            handleScrollAnimations();
-            setupSmoothScrolling();
-        });
-    </script>
+    <script src="app.js?v=4" defer></script>
 </body>
 </html>
