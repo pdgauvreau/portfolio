@@ -5,6 +5,10 @@ import utah from './assets/utah.jpg';
 import volleyball from './assets/volleyball.jpg';
 import golf from './assets/golf.jpg';
 import ai from './assets/ai.jpg';
+import plateChicago from './assets/plate-chicago.webp';
+import plateSystems from './assets/plate-systems.webp';
+import plateWasatch from './assets/plate-wasatch.webp';
+import platePacific from './assets/plate-pacific.webp';
 
 export const profile = {
   name: 'Paul Gauvreau',
@@ -139,3 +143,40 @@ export const about = {
   ],
   portrait: ai,
 };
+
+// Full-bleed interludes between sections. Ordered as a journey that leaves
+// Chicago and returns to it — the arc the resume itself doesn't show.
+export const chapters = [
+  {
+    id: 'ch-chicago',
+    index: 'I',
+    title: 'Back where it started',
+    line: 'Born in Chicago, returned to it on a trading floor twenty-two years later.',
+    place: 'Chicago, Illinois',
+    image: plateChicago,
+  },
+  {
+    id: 'ch-systems',
+    index: 'II',
+    title: 'Things that stay up',
+    line: 'Caches, threads, and message queues — the parts nobody sees until they fail.',
+    place: 'Off hours',
+    image: plateSystems,
+  },
+  {
+    id: 'ch-wasatch',
+    index: 'III',
+    title: 'Training grounds',
+    line: 'Four years under the Wasatch, learning how software actually works.',
+    place: 'Salt Lake City, Utah',
+    image: plateWasatch,
+  },
+  {
+    id: 'ch-pacific',
+    index: 'IV',
+    title: 'The long way west',
+    line: 'Raised on the Pacific. The move stuck; the Chicago loyalty never did budge.',
+    place: 'San Diego, California',
+    image: platePacific,
+  },
+];

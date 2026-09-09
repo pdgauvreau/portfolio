@@ -13,6 +13,8 @@ export const ink = {
   ruleStrong: '#CFC8B8',
   accent: '#B0442A',
   accentSoft: 'rgba(176, 68, 42, 0.10)',
+  // Lifted accent for use on dark plates, where the ink accent goes muddy.
+  accentOnDark: '#E4906E',
 };
 
 const display = '"Instrument Serif", "Iowan Old Style", Georgia, serif';
