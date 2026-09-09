@@ -1,58 +1,83 @@
 import { createTheme } from '@mui/material/styles';
 
-// Palette tuned to recent-Halo UI: near-black charcoal panels, bright pale-blue
-// hard-light accents, gold used sparingly for emphasis.
-export const hud = {
-  blue: '#8fd7f2',
-  blueBright: '#c6ecfa',
-  blueDim: 'rgba(143, 215, 242, 0.32)',
-  gold: '#e8b96a',
-  green: '#9fd68c',
-  panel: 'rgba(12, 18, 22, 0.86)',
-  panelSolid: '#0c1216',
-  ink: '#050a0d',
+// Editorial palette: warm paper, near-black ink, a single restrained accent.
+// Everything else is a rule, a gap, or type.
+export const ink = {
+  paper: '#FBFAF7',
+  paperRaised: '#FFFFFF',
+  ink: '#16150F',
+  body: '#3A3830',
+  muted: '#7A756A',
+  faint: '#A9A399',
+  rule: '#E3DED2',
+  ruleStrong: '#CFC8B8',
+  accent: '#B0442A',
+  accentSoft: 'rgba(176, 68, 42, 0.10)',
 };
+
+const display = '"Instrument Serif", "Iowan Old Style", Georgia, serif';
+const sans = '"Inter Variable", "Inter", "Segoe UI", system-ui, sans-serif';
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
-    primary: { main: hud.blue },
-    secondary: { main: hud.gold },
-    background: { default: hud.ink, paper: hud.panel },
-    text: { primary: '#dfeaf0', secondary: '#8ea3ad' },
+    mode: 'light',
+    primary: { main: ink.accent },
+    background: { default: ink.paper, paper: ink.paperRaised },
+    text: { primary: ink.ink, secondary: ink.muted },
+    divider: ink.rule,
   },
   typography: {
-    fontFamily: '"Barlow", "Segoe UI", sans-serif',
-    h1: { fontFamily: '"Saira Condensed", sans-serif', fontWeight: 700 },
-    h2: { fontFamily: '"Saira Condensed", sans-serif', fontWeight: 700 },
-    h3: { fontFamily: '"Saira Condensed", sans-serif', fontWeight: 700, letterSpacing: '0.02em' },
-    h4: { fontFamily: '"Saira Condensed", sans-serif', fontWeight: 700, letterSpacing: '0.06em' },
-    h5: { fontFamily: '"Saira Condensed", sans-serif', fontWeight: 600, letterSpacing: '0.05em' },
-    h6: { fontFamily: '"Saira Condensed", sans-serif', fontWeight: 600, letterSpacing: '0.04em' },
-    button: { fontFamily: '"Chakra Petch", sans-serif', fontWeight: 600, letterSpacing: '0.14em' },
-    caption: { fontFamily: '"Chakra Petch", sans-serif', letterSpacing: '0.16em' },
-    overline: { fontFamily: '"Chakra Petch", sans-serif', letterSpacing: '0.28em' },
+    fontFamily: sans,
+    // Display sizes use clamp so the hero scales without breakpoint jumps.
+    h1: {
+      fontFamily: display,
+      fontWeight: 400,
+      fontSize: 'clamp(3.4rem, 11vw, 9rem)',
+      lineHeight: 0.92,
+      letterSpacing: '-0.02em',
+    },
+    h2: {
+      fontFamily: display,
+      fontWeight: 400,
+      fontSize: 'clamp(2.2rem, 5vw, 3.6rem)',
+      lineHeight: 1.04,
+      letterSpacing: '-0.015em',
+    },
+    h3: {
+      fontFamily: display,
+      fontWeight: 400,
+      fontSize: 'clamp(1.7rem, 3.2vw, 2.5rem)',
+      lineHeight: 1.1,
+      letterSpacing: '-0.01em',
+    },
+    h4: { fontFamily: sans, fontWeight: 600, fontSize: '1.28rem', letterSpacing: '-0.011em', lineHeight: 1.3 },
+    h5: { fontFamily: sans, fontWeight: 600, fontSize: '1.06rem', letterSpacing: '-0.008em' },
+    h6: { fontFamily: sans, fontWeight: 600, fontSize: '0.95rem', letterSpacing: '-0.005em' },
+    body1: { fontSize: '1.03rem', lineHeight: 1.68, letterSpacing: '-0.005em', color: ink.body },
+    body2: { fontSize: '0.94rem', lineHeight: 1.62, letterSpacing: '-0.003em', color: ink.body },
+    // Small tracked label used for section numbers and meta rows.
+    overline: {
+      fontFamily: sans,
+      fontWeight: 500,
+      fontSize: '0.7rem',
+      letterSpacing: '0.16em',
+      textTransform: 'uppercase',
+      lineHeight: 1.6,
+    },
+    caption: { fontFamily: sans, fontSize: '0.8rem', letterSpacing: '0.005em', color: ink.muted },
+    button: { fontFamily: sans, fontWeight: 500, letterSpacing: '0.01em', textTransform: 'none' },
   },
-  shape: { borderRadius: 0 },
+  shape: { borderRadius: 2 },
   components: {
-    MuiPaper: {
+    MuiCssBaseline: {
       styleOverrides: {
-        root: { backgroundImage: 'none', borderRadius: 0 },
+        body: { backgroundColor: ink.paper, color: ink.ink },
       },
     },
-    MuiChip: {
-      styleOverrides: {
-        root: {
-          borderRadius: 0,
-          fontFamily: '"Chakra Petch", sans-serif',
-          fontWeight: 500,
-          letterSpacing: '0.06em',
-        },
-      },
-    },
+    MuiPaper: { styleOverrides: { root: { backgroundImage: 'none' } } },
     MuiButton: {
       styleOverrides: {
-        root: { borderRadius: 0, textTransform: 'uppercase' },
+        root: { borderRadius: 2, paddingInline: 20, paddingBlock: 10 },
       },
     },
   },
