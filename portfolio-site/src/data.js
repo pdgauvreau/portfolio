@@ -27,9 +27,9 @@ export const sections = [
 ];
 
 export const highlights = [
-  { value: '78%', label: 'faster dashboard reloads shipped at Milliman' },
-  { value: '3', label: 'internships across fintech, IT, and product' },
-  { value: '6+', label: 'languages in regular use' },
+  { value: 78, suffix: '%', label: 'faster dashboard reloads shipped at Milliman' },
+  { value: 3, label: 'internships across fintech, IT, and product' },
+  { value: 6, suffix: '+', label: 'languages in regular use' },
 ];
 
 export const experience = [
