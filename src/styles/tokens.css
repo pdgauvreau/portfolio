@@ -1,0 +1,29 @@
+:root {
+  /* Ground and ink */
+  --bg: #0e1b2c;
+  --bg-tile: #152238;
+  --bg-tile-raised: #1a2942;
+  --ink: #f5f1ea;
+  --ink-2: #c3c9d6;
+  --ink-3: #8993a8;
+  --rule: #263752;
+  --rule-soft: #1c2a41;
+
+  /* The one accent. CTAs, hover states, kinetic underline, active borders. */
+  --coral: #ff6b4a;
+  --coral-deep: #e8552f;
+  --coral-wash: rgba(255, 107, 74, 0.12);
+
+  /* Type */
+  --display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --script: 'Newsreader', Georgia, serif;
+  --body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Rhythm */
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --measure: 78rem;
+  --section-gap: clamp(6rem, 14vh, 11rem);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
