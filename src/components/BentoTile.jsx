@@ -19,7 +19,7 @@ export function BentoTile({ id, onOpen, eyebrow, title, teaser, tags, media, med
           onOpen(id);
         }
       }}
-      whileHover={{ y: -4, scale: 1.015 }}
+      whileHover={{ x: -3, y: -3 }}
       whileTap={{ scale: 0.99 }}
       transition={{ type: 'spring', stiffness: 300, damping: 26 }}
     >

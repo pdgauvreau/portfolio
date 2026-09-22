@@ -1,23 +1,32 @@
 :root {
-  /* Ground and ink */
-  --bg: #0e1b2c;
-  --bg-tile: #152238;
-  --bg-tile-raised: #1a2942;
-  --ink: #f5f1ea;
-  --ink-2: #c3c9d6;
-  --ink-3: #8993a8;
-  --rule: #263752;
-  --rule-soft: #1c2a41;
+  /* Newsprint: warm paper, black ink, gray rules. */
+  --bg: #ece8de;
+  --bg-tile: #f4f1ea;
+  --bg-tile-raised: #f8f6f1;
+  --ink: #141414;
+  --ink-2: #3b3a37;
+  --ink-3: #6f6c66;
+  --rule: #c4bfb3;
+  --rule-soft: #d9d4c8;
+  --rule-strong: #141414;
+  /* Light text on ink chips. */
+  --paper: #f6f4ee;
 
-  /* The one accent. CTAs, hover states, kinetic underline, active borders. */
-  --coral: #ff6b4a;
-  --coral-deep: #e8552f;
-  --coral-wash: rgba(255, 107, 74, 0.12);
+  /* The accent is ink itself: CTAs, hover states, kinetic underline, active borders. */
+  --accent: #141414;
+  --accent-deep: #000;
+  --accent-wash: rgba(20, 20, 20, 0.08);
+
+  /* Spot color used only inside media, so it reads as gray until a card is hovered. */
+  --spot: #c8412b;
+
+  /* Halftone screen laid over media at rest. */
+  --halftone: radial-gradient(rgba(20, 20, 20, 0.15) 0.7px, transparent 1.1px) 0 0 / 4px 4px;
 
   /* Type */
-  --display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --display: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --script: 'Newsreader', Georgia, serif;
-  --body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --body: 'Newsreader', Georgia, 'Times New Roman', serif;
   --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* Rhythm */

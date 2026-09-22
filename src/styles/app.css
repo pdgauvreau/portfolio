@@ -16,13 +16,18 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 0.5rem 1.5rem;
+  /* Newspaper nameplate: a double rule under the name. */
+  padding-bottom: clamp(0.4rem, 1vh, 0.65rem);
+  border-bottom: 4px double var(--rule-strong);
 }
 
 .screen-name {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  font-weight: 500;
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 1;
   color: var(--ink);
 }
 
@@ -58,40 +63,24 @@
   gap: 0.5rem;
   padding: clamp(1.1rem, 2vw, 1.75rem);
   background: var(--bg-tile);
-  border: 1px solid var(--rule);
-  border-radius: 1.25rem;
+  border: 2px solid var(--rule-strong);
+  border-radius: 4px;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.6);
-  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  /* Comic panel: a hard ink shadow that grows as the panel lifts on hover. */
+  box-shadow: 0 0 0 var(--rule-strong);
+  transition: box-shadow 0.35s var(--ease);
 }
 
-/* Resting wash over the whole card; lifts on hover so the card "wakes up". */
+/* Resting wash of paper over the whole card; lifts on hover so the card "wakes up". */
 .tile::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: rgba(8, 15, 26, 0.38);
+  background: rgba(236, 232, 222, 0.28);
   transition: opacity 0.5s var(--ease);
-}
-
-/* Warm glow rising from the bottom edge, shown only on hover. */
-.tile::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: radial-gradient(120% 80% at 50% 115%, rgba(255, 107, 74, 0.2), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.5s var(--ease);
-}
-
-.tile:hover::before,
-.tile:focus-visible::before {
-  opacity: 1;
 }
 
 .tile > :not(.tile-media) {
@@ -101,10 +90,7 @@
 
 .tile:hover,
 .tile:focus-visible {
-  border-color: var(--coral);
-  box-shadow:
-    0 0 0 1px rgba(255, 107, 74, 0.35),
-    0 28px 60px -26px rgba(255, 107, 74, 0.35);
+  box-shadow: 6px 6px 0 var(--rule-strong);
 }
 
 .tile:hover::after,
@@ -118,13 +104,17 @@
 
 .tile:hover .tile-eyebrow,
 .tile:focus-visible .tile-eyebrow {
-  color: var(--coral);
+  color: var(--accent);
 }
 
 .tile:hover .tile-media,
 .tile:focus-visible .tile-media {
-  filter: saturate(1);
-  transform: scale(1.02);
+  filter: none;
+}
+
+.tile:hover .tile-media::after,
+.tile:focus-visible .tile-media::after {
+  opacity: 0;
 }
 
 .tile:focus-visible {
@@ -185,7 +175,7 @@
   position: fixed;
   inset: 0;
   z-index: 90;
-  background: rgba(6, 11, 19, 0.72);
+  background: rgba(20, 20, 20, 0.45);
   backdrop-filter: blur(4px);
 }
 
@@ -220,8 +210,8 @@
 }
 
 .tile-close:hover {
-  border-color: var(--coral);
-  color: var(--coral);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .tile-expanded-body {
@@ -290,7 +280,7 @@
   gap: 0.6rem;
   padding: 0.7rem 1.35rem;
   border-radius: 999px;
-  background: var(--coral);
+  background: var(--accent);
   color: var(--bg);
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -302,7 +292,7 @@
 }
 
 .action-primary:hover {
-  background: var(--coral-deep);
+  background: var(--accent-deep);
 }
 
 .action-quiet {
@@ -329,7 +319,7 @@
 }
 
 .action-quiet:hover {
-  color: var(--coral);
+  color: var(--accent);
 }
 
 .action-quiet:hover::after {
@@ -373,7 +363,7 @@
   padding: 1.1rem 1.35rem;
   background: var(--bg-tile);
   border: 1px solid var(--rule);
-  border-radius: 1rem;
+  border-radius: 3px;
 }
 
 .fact-value {
@@ -394,11 +384,23 @@
   position: absolute;
   top: 0.6rem;
   right: 0.6rem;
-  border-radius: 0.9rem;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: 2px;
   overflow: hidden;
   background: var(--bg);
-  filter: saturate(0.75);
-  transition: filter 0.5s var(--ease), transform 0.7s var(--ease);
+  /* Printed look at rest: black and white, a touch of contrast, halftone dots on top. */
+  filter: grayscale(1) contrast(1.08);
+  transition: filter 0.6s var(--ease);
+}
+
+.tile-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--halftone);
+  mix-blend-mode: multiply;
+  transition: opacity 0.6s var(--ease);
 }
 
 .tile-with-media .tile-teaser {
@@ -438,7 +440,7 @@
 
 /* Short tiles (one grid row) give the copy a little more room under top media. */
 .tile-short.tile-media-top .tile-media {
-  height: calc(50% - 0.6rem);
+  height: calc(44% - 0.6rem);
 }
 
 .tile-short .tile-teaser {
@@ -582,13 +584,13 @@
 .wall-frame {
   position: relative;
   width: 100%;
-  border-radius: 0.6rem;
+  border-radius: 3px;
   overflow: hidden;
   background: var(--bg-tile-raised);
 }
 
 .wall-compact .wall-frame {
-  border-radius: 0.4rem;
+  border-radius: 2px;
 }
 
 .wall-layer {
@@ -645,13 +647,13 @@
   margin: 0;
   padding: 0.55rem 1.1rem;
   border-radius: 999px;
-  background: rgba(14, 27, 44, 0.78);
+  background: rgba(20, 20, 20, 0.86);
   backdrop-filter: blur(6px);
   font-family: var(--mono);
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--paper);
   pointer-events: none;
 }
 
@@ -660,10 +662,10 @@
   top: clamp(1rem, 3vw, 2rem);
   left: clamp(1rem, 3vw, 2rem);
   padding: 0.6rem 1.1rem;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--rule-strong);
   border-radius: 999px;
-  background: rgba(14, 27, 44, 0.85);
-  color: var(--ink);
+  background: rgba(20, 20, 20, 0.86);
+  color: var(--paper);
   cursor: pointer;
 }
 
@@ -678,8 +680,8 @@
   min-height: 60vh;
   padding: clamp(2rem, 6vw, 5rem);
   background: var(--bg-tile-raised);
-  border-radius: 1.5rem 1.5rem 0 0;
-  box-shadow: 0 -30px 60px -24px rgba(0, 0, 0, 0.6);
+  border-top: 4px double var(--rule-strong);
+  box-shadow: 0 -18px 40px -24px rgba(0, 0, 0, 0.25);
 }
 
 .hero-details .tile-expanded-body {
@@ -722,13 +724,13 @@
   margin: 0;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(14, 27, 44, 0.72);
+  background: rgba(20, 20, 20, 0.86);
   backdrop-filter: blur(6px);
   font-family: var(--mono);
   font-size: 0.625rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--paper);
   opacity: 0;
   transform: translateY(4px);
   transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
@@ -750,7 +752,7 @@
 
 .scrub-bar {
   height: 100%;
-  background: var(--coral);
+  background: var(--spot);
   transform: scaleX(0);
   transform-origin: 0 50%;
 }
@@ -778,10 +780,10 @@
   display: flex;
   flex-direction: column;
   border: 1px solid var(--rule);
-  border-radius: 0.9rem;
+  border-radius: 4px;
   overflow: hidden;
   background: var(--bg-tile);
-  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.3);
 }
 
 .site-frame-bar {
@@ -830,7 +832,7 @@
 }
 
 .site-frame-open:hover {
-  color: var(--coral);
+  color: var(--accent);
 }
 
 /* Poster shows through until the site finishes loading. */
@@ -967,7 +969,7 @@
   background: #f4f5f4;
   color: #16211d;
   font-family: 'Inter', var(--body);
-  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.3);
 }
 
 .talk-head {
@@ -1191,9 +1193,18 @@
 
 .system-compact {
   padding: 0.7rem 0.9rem;
-  background:
-    radial-gradient(80% 70% at 50% 50%, rgba(255, 107, 74, 0.08), transparent 70%),
-    var(--bg);
+  background: var(--bg);
+}
+
+/* Small and printed: draw the card-face diagram in ink so it holds up in grayscale. */
+.system-compact .system-edge {
+  stroke: var(--ink-3);
+}
+
+.system-compact .system-node circle {
+  fill: var(--bg-tile);
+  stroke: var(--ink);
+  stroke-width: 1.75;
 }
 
 .system-edge {
@@ -1204,11 +1215,11 @@
 }
 
 .system-edge.is-active {
-  stroke: rgba(255, 107, 74, 0.45);
+  stroke: rgba(200, 65, 43, 0.55);
 }
 
 .system-packet {
-  fill: var(--coral);
+  fill: var(--spot);
 }
 
 .system-packet.is-return {
@@ -1225,7 +1236,7 @@
 
 .system-node-engine circle,
 .system-node-engine rect {
-  stroke: var(--coral);
+  stroke: var(--spot);
 }
 
 .system-node text {
@@ -1257,10 +1268,10 @@
   stroke: var(--ink);
 }
 
-/* Opaque (coral wash over the raised tile) so links end at the node, not through it. */
+/* Opaque (spot wash over the raised tile) so links end at the node, not through it. */
 .system-node.is-selected rect {
-  fill: #35313f;
-  stroke: var(--coral);
+  fill: #f3e2dc;
+  stroke: var(--spot);
 }
 
 .system-about {
@@ -1270,12 +1281,12 @@
   padding: 1.1rem 1.3rem;
   background: var(--bg-tile);
   border: 1px solid var(--rule);
-  border-radius: 0.9rem;
+  border-radius: 3px;
 }
 
 .system-about .eyebrow {
   margin: 0 0 0.45rem;
-  color: var(--coral);
+  color: var(--spot);
 }
 
 .system-about p:last-child {
@@ -1315,7 +1326,6 @@
   padding-top: 1.4rem;
   overflow: hidden;
   background:
-    radial-gradient(70% 90% at 50% 100%, rgba(255, 107, 74, 0.1), transparent 70%),
     var(--bg);
 }
 
@@ -1324,8 +1334,9 @@
   width: min(78%, 26rem);
   height: auto;
   align-self: flex-start;
-  border-radius: 3px;
-  box-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.75);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  box-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.3);
   transform: rotate(-3deg) translateY(10px);
   transform-origin: 50% 0;
   transition: transform 0.7s var(--ease), box-shadow 0.7s var(--ease);
@@ -1335,7 +1346,7 @@
 .tile:hover .paper,
 .tile:focus-visible .paper {
   transform: rotate(0deg) translateY(-6px);
-  box-shadow: 0 34px 70px -20px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 34px 70px -20px rgba(0, 0, 0, 0.35);
 }
 
 .resume-viewer {
@@ -1372,7 +1383,7 @@
   max-width: 44rem;
   height: auto;
   border-radius: 4px;
-  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.3);
 }
 
 .tile-aside-stacked .resume-viewer {
