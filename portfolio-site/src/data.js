@@ -9,6 +9,11 @@ import plateChicago from './assets/plate-chicago.webp';
 import plateSystems from './assets/plate-systems.webp';
 import plateWasatch from './assets/plate-wasatch.webp';
 import platePacific from './assets/plate-pacific.webp';
+import animusIcon from './assets/animus-icon.webp';
+import animusToday from './assets/animus-today.webp';
+import animusStandings from './assets/animus-standings.webp';
+import animusFeed from './assets/animus-feed.webp';
+import animusCabinet from './assets/animus-cabinet.webp';
 
 export const profile = {
   name: 'Paul Gauvreau',
@@ -24,6 +29,7 @@ export const profile = {
 
 export const sections = [
   { id: 'work', label: 'Work' },
+  { id: 'featured', label: 'Animus' },
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'about', label: 'About' },
@@ -72,6 +78,35 @@ export const experience = [
     ],
   },
 ];
+
+// The headline project: a shipped product, not a coursework exercise.
+export const featured = {
+  name: 'Animus',
+  icon: animusIcon,
+  tagline: 'A fantasy league for self-improvement',
+  status: 'In review for production — Google Play',
+  role: 'Solo — design, app, and backend',
+  date: '2026',
+  summary:
+    'Friends compete in two-week seasons by completing one daily ritual: mind, body, light, or tribe. Everyone plays the same fourteen cards in a different order, so showing up beats being impressive — completing a ritual is worth roughly 100 of the 150 points available on any given day.',
+  detail:
+    'Built end to end as a React Native app on Expo with a Supabase backend: auth, leagues, live standings, photo proof with league-run challenge votes, a season draft the league votes on, and a trophy cabinet that keeps every past season. Includes a daily trivia set and a mini crossword, each identical for the whole league that day.',
+  points: [
+    'Designed the full scoring model so consistency outweighs performance — streak and assist bonuses on top of a flat showing-up score.',
+    'Real-time leagues on Supabase: invite codes and QR joins, live standings, a photo feed, and a 24-hour majority-vote challenge system for disputed proof.',
+    'A fluid motion language where elements fill, drain and settle rather than bounce, with a living background that records your season — and that honours Reduce Motion.',
+    'Shipped the store presence too: icon, adaptive Android assets, and the framed screenshot sets for Play and Instagram.',
+  ],
+  stack: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'Reanimated', 'Expo Router'],
+  instagram: 'https://instagram.com/animuscomp',
+  instagramHandle: '@animuscomp',
+  shots: [
+    { src: animusToday, caption: 'Today' },
+    { src: animusStandings, caption: 'Standings' },
+    { src: animusFeed, caption: 'Proof feed' },
+    { src: animusCabinet, caption: 'The Cabinet' },
+  ],
+};
 
 export const projects = [
   {

@@ -202,7 +202,7 @@ export function Work() {
 export function Projects() {
   return (
     <Section id="projects" label="Projects">
-      <SectionLabel index={2}>Projects</SectionLabel>
+      <SectionLabel index={3}>Projects</SectionLabel>
 
       <Stagger
         stagger={0.12}
@@ -241,7 +241,7 @@ export function Projects() {
 export function Skills() {
   return (
     <Section id="skills" label="Skills and education">
-      <SectionLabel index={3}>Skills</SectionLabel>
+      <SectionLabel index={4}>Skills</SectionLabel>
 
       <Box
         sx={{
@@ -314,7 +314,7 @@ export function Skills() {
 export function About() {
   return (
     <Section id="about" label="About">
-      <SectionLabel index={4}>About</SectionLabel>
+      <SectionLabel index={5}>About</SectionLabel>
 
       <Box
         sx={{
@@ -354,7 +354,7 @@ export function About() {
 export function Contact() {
   return (
     <Section id="contact" label="Contact" sx={{ pb: { xs: 6, md: 10 } }}>
-      <SectionLabel index={5}>Contact</SectionLabel>
+      <SectionLabel index={6}>Contact</SectionLabel>
 
       <Stagger stagger={0.1}>
         <Mask>

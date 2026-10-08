@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Header from './components/Header';
 import ChapterBreath from './components/ChapterBreath';
+import Featured from './components/Featured';
 import { About, Contact, Footer, Hero, Projects, Skills, Work } from './components/sections';
 import { chapters } from './data';
 
@@ -17,6 +18,7 @@ export default function App() {
         <ChapterBreath chapter={chicago} image={chicago.image} />
         <Work />
         <ChapterBreath chapter={systems} image={systems.image} />
+        <Featured />
         <Projects />
         <ChapterBreath chapter={wasatch} image={wasatch.image} />
         <Skills />
